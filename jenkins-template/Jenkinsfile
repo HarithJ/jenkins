@@ -1,0 +1,19 @@
+pipeline {
+  agent{
+    kubernetes {
+      label 'label-name'
+      defaultContainer 'jnlp'
+      yamlFile 'agent.yaml'
+    }
+  }
+
+  stages {
+    stage('Run tests') {
+      steps {
+        container ('container-name') {
+          sh 'echo tests'
+        }
+      }
+    }
+  }
+}
